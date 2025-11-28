@@ -46,7 +46,6 @@ void MainWindow::configurarInterfaz() {
         btn->setMinimumHeight(50);
         botonesOpciones.push_back(btn);
 
-        // Conexión Signal-Slot usando una lambda para pasar el índice
         connect(btn, &QPushButton::clicked, this, [this, i]() {
             verificarRespuesta(i);
         });
@@ -113,3 +112,4 @@ void MainWindow::mostrarResultadoFinal() {
                              "Juego Terminado.\nPuntaje Final: " + QString::number(juego.getPuntaje()));
     close(); // Cerrar la aplicación
 }
+
