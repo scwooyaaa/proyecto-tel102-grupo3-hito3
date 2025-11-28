@@ -19,7 +19,16 @@ El comportamiento que se espera la aplicación realice al interactuar los usuari
 - Feedback: Inmediatamente después del clic, la interfaz bloquea el flujo brevemente con un QMessageBox informando al usuario si acertó o falló.
 - Avance: Al cerrar el mensaje de feedback, la interfaz solicita la siguiente pregunta a la lógica y actualiza los textos de los botones y la etiqueta de puntaje.
 - Fin del Juego: Si no quedan más preguntas (hayMasPreguntas() retorna falso), se despliega un mensaje final con el puntaje total y la aplicación se cierra o reinicia.
+# Ejemplos de ejecución
+<img width="502" height="427" alt="prueba" src="https://github.com/user-attachments/assets/97c4bea7-d850-4db8-bee9-025732c94f65" />
 
 # Uso de signals y slots
-El uso de signals y slots es el mecanismo central utilizado dentro del programa, estos ayudan a que la interfaz gráfica responda a las acciones del usuario. Estos actúan principalmente cuando el usuario selecciona una respuesta, es por esto que se utilizan signals dentro de la clase QpushBotton, para avisar cada vez que se selecciona una alternativa. Siguiendole a esta interacción se utiliza un slot como receptor dentro de la clase mainwindow para verificar si la respuesta seleccionada es la correcta. Por otra parte también se utilizan conexiones para la señal clicked y pasar esta como argumento al slot.
-Las signals y slots son utilizadas principalmente dentro de la clase mainwindow, ya que esta es la que recibe las interacciones de la interfaz, por lo que su objetivo es traducirlas y pasarlas hacia el resto del programa donde se verifíca lo lógico y si la respuesta seleccionada es la correcta. También son utilizados dentro de la clase juego para procesar las respuestas.
+- El uso de signals y slots es el mecanismo central utilizado dentro del programa, estos ayudan a que la interfaz gráfica responda a las acciones del usuario. Estos actúan principalmente cuando el usuario selecciona una respuesta, es por esto que se utilizan signals al presionar los botones, para avisar cada vez que se selecciona una alternativa. Siguiendole a esta interacción se utiliza un slot como receptor dentro de la clase mainwindow para verificar si la respuesta seleccionada es la correcta, luego este slot llama a la clase juego para procesar la respuesta y guardar si esta es correcta, mostrando también un mensaje, para después pasar a la siguiente pregunta.
+Por otra parte también se utilizan conexiones para la señal clicked y pasar esta como argumento al slot.
+- Las signals y slots son utilizadas principalmente dentro de la clase mainwindow, ya que esta es la que recibe las interacciones de la interfaz, por lo que su objetivo es traducirlas y pasarlas hacia el resto del programa donde se verifíca lo lógico y si la respuesta seleccionada es la correcta. También son utilizados dentro de la clase juego para procesar las respuestas.
+
+# Principales desafíos
+Los principales desafíos experimentados al integrar la interfaz qt fueron que este programa implementa sus funciones de una manera distinta a la acostumbrada en un código c o c++ común, ya que lo que se utiliza al realizar el programa termina siendo algo más visual e interactivo en vez de simplemete código y letra. Por otra parte este fue un programa nuevo que nunca se había utilizado, por lo que tuve complicaciones al instalarlo y correr el programa en mi dispositivo, además de aprender a desarrollar el programa dentro de esta interfaz.
+
+
+
