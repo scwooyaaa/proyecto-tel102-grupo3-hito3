@@ -96,15 +96,19 @@ void MainWindow::cargarPreguntaActual() {
 }
 
 void MainWindow::verificarRespuesta(int indexBoton) {
+    const Pregunta& preguntaActual = juego.obtenerPreguntaActual();
+    int indiceCorrecto = preguntaActual.getRespuestaCorrecta();
+    std::string textoRespuestaCorrecta = preguntaActual.getOpciones()[indiceCorrecto];
     bool correcta = juego.procesarRespuesta(indexBoton);
-
     if (!correcta) {
-        QMessageBox::warning(this, "Incorrecto", "La respuesta era incorrecta.");
+        QString mensaje = QString("Te equivocaste.\nLa respuesta correcta era:\n\n-> %1")
+                          .arg(QString::fromStdString(textoRespuestaCorrecta));
+                          
+        QMessageBox::warning(this, "Incorrecto", mensaje);
     } else {
-        QMessageBox::information(this, "Correcto", "¡Bien hecho!");
+        QMessageBox::information(this, "Correcto", "¡Bien hecho! Sumas 10 puntos.");
     }
-
-    cargarPreguntaActual(); // Cargar la siguiente
+    cargarPreguntaActual(); 
 }
 
 void MainWindow::mostrarResultadoFinal() {
@@ -112,4 +116,5 @@ void MainWindow::mostrarResultadoFinal() {
                              "Juego Terminado.\nPuntaje Final: " + QString::number(juego.getPuntaje()));
     close(); // Cerrar la aplicación
 }
+
 
